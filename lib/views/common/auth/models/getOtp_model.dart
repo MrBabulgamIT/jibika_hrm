@@ -1,0 +1,63 @@
+
+import 'dart:convert';
+
+GetOtpModel getOtpFromJson(String str) =>
+    GetOtpModel.fromJson(json.decode(str));
+
+String getOtpToJson(GetOtpModel data) =>
+    json.encode(data.toJson());
+
+class GetOtpModel {
+  GetOtpModel({
+    this.program,
+    this.version,
+    this.release,
+    this.datetime,
+    this.status,
+    this.code,
+    this.message,
+    this.error,
+    this.data,
+  });
+
+  String? program;
+  String? version;
+  String? release;
+  String? datetime;
+  String? status;
+  String? code;
+  dynamic message;
+  dynamic error;
+  String? data;
+
+  factory GetOtpModel.fromJson(Map<String, dynamic> json) =>
+      GetOtpModel(
+          program: json["program"],
+          version: json["version"],
+          release: json["release"],
+          datetime: json["datetime"],
+          status: json["status"],
+          code: json["code"],
+          message: json["message"],
+          error: json["error"],
+          data: json["data"]
+      );
+
+  Map<String, dynamic> toJson() => {
+      "program": program,
+      "version": version,
+      "release": release,
+      "datetime": datetime,
+      "status": status,
+      "code": code,
+      "message": message,
+      "error": error,
+      "data": data
+  };
+
+  @override
+  String toString() {
+    return 'GetOtpModel(program: $program, version: $version, release: $release, datetime: $datetime, status: $status, code: $code, message: $message, error: $error, data: $data)';
+  }
+}
+
